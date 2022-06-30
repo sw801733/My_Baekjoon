@@ -36,10 +36,9 @@ int main()
     string str;
     
     cin >> n;
-    cin.ignore(256,'\n');
     for(int i = 0; i < n; i++)
     {
-        getline(cin,str);
+        cin >> str;
         cnt += Group_Word_Check(str);
     }
     cout << cnt;
