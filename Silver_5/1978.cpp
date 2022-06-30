@@ -10,7 +10,7 @@ int prime(int n)
 {
 	if (n == 1)
 		return 0;
-	for (int j = 2; j <= n; j++)
+	for (int j = 2; j <= sqrt(n); j++)
 	{
 		if (n % j == 0)
 		{
