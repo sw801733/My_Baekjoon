@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 
+// 크로아티아 문자를 미리 만들고 String 에서 찾은 뒤 해당 string을 문자 하나로
+// 바꿔서 알파벳 숫자를 세는 방법도 있다.
+
 using namespace std;
 
 int Croatia_Alphabet(string str)
@@ -22,9 +25,6 @@ int Croatia_Alphabet(string str)
                     cnt -= 2;
                 else
                     cnt -= 1;
-            
-                
-
             }
         }
         else if (str[i] == '-')
