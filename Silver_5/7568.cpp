@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -11,14 +10,14 @@ int main()
 
     int n;
     cin >> n;
-    vector<pair<int, int>> my_v;
+    pair<int,int> my_p[51];
 
 
     for(int i = 0 ; i < n; i++)
     {
         int a, b;
         cin >> a >> b;
-        my_v.push_back(make_pair(a,b));
+        my_p[i] = {a,b};
     }
 
     for(int i = 0; i < n; i++)
@@ -26,12 +25,9 @@ int main()
         int rank = 1;
         for(int j = 0; j < n; j++)
         {
-            if (my_v[i].first < my_v[j].first)
+            if ((my_p[i].first < my_p[j].first) && (my_p[i].second < my_p[j].second))
             {
-                if (my_v[i].second < my_v[j].second)
-                {
-                    rank++;
-                }
+                rank++;
             }
         }
         cout << rank << " ";
