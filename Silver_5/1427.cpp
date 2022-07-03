@@ -9,24 +9,15 @@ int main()
     cin.tie(NULL);
 	ios::sync_with_stdio(false);
 
-    int n;
-    vector<int> my_v;
-    cin >> n;
+    string str;
+    cin >> str;
 
-    while(n > 0)
+    sort(str.begin(),str.end(),
+    [](int a, int b)
     {
-        my_v.push_back(n % 10);
-        n = n / 10;
-    }
-
-    sort(my_v.begin(),my_v.end(),
-    [](int a, int b){
         return a > b;
-    });
-
-    for(int i = 0; i < my_v.size(); i++)
-    {
-        cout << my_v[i];
     }
+    );
+    cout << str;
     return 0;
 }
