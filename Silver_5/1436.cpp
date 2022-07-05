@@ -12,23 +12,24 @@ int main()
     int n;
     cin >> n;
 
-    string end_number = "666";
-    int number = 666;
-    int end_flag = 0;
+    int number = 0;
     int cnt = 0;
-    while(1)
-    {
-        string temp = to_string(number);
-        if (temp.find(end_number) != string::npos)
-            cnt += 1;
 
-        if(cnt == n)
+    while(n != cnt)
+    {   
+        number++;
+        int temp = number;
+        while (temp != 0)
         {
-            cout << number;
-            break;
-        }
-        number += 1;
+            if(temp % 1000 == 666)
+            {
+                cnt++;
+                break;
+            }
 
+            temp /= 10;
+        } 
     }
+    cout << number;
     return 0;
 }
