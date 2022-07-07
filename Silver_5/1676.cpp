@@ -9,20 +9,13 @@ int main()
     cout.tie(NULL);
 
     int n;
-    int result;
     int cnt = 0;
     
     cin >> n;
     
-    while(n != 0)
+    for(int i = 5; i <= n; i*=5)
     {
-        if (n % 125 == 0)
-            cnt += 3;
-        else if (n % 25 == 0)
-            cnt += 2;
-        else if (n % 5 == 0)
-            cnt++;
-        n--;
+        cnt += (n / i);
     }
     cout << cnt;
     return 0;
