@@ -12,25 +12,12 @@ int main()
     int year = 1;
     cin >> E >> S >> M;
 
-    while(E != 1 || S != 1 || M != 1)
+    while(1)
     {
-        year++;
-        if (E == 1)
-        {
-            E = 16;
-        }
-        if (S == 1)
-        {
-            S = 29;
-        }
-        if (M == 1)
-        {
-            M = 20;
-        }
-        E--;
-        S--;
-        M--;
 
+        if ((year - E) % 15 == 0 && (year - S) % 28 == 0 && (year - M) % 19 == 0)
+            break;
+        year++;
     }
     cout << year;
     return 0;
