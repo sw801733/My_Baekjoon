@@ -8,8 +8,8 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    unsigned int S;
-    unsigned int sum = 0;
+    long long S;
+    long long sum = 0;
     int n = 1;
     int idx = 0;
     cin >> S;
