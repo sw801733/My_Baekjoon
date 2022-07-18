@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include <algorithm>
-
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main()
     
     int N, M;
     int cnt = 0;
-    vector<string> my_v;
+    map<string, int> my_m;
     vector<string> v2;
 
     cin >> N >> M;
@@ -23,23 +23,23 @@ int main()
     {
         string str;
         cin >> str;
-        my_v.push_back(str);
+        my_m[str] = true;
     }
-    sort(my_v.begin(),my_v.end()); // for binary_search
+
     for(int i = 0; i < M; i++)
     {
         string str;
         cin >> str;
-        auto f = binary_search(my_v.begin(),my_v.end(),str);
-        if (f == true)
+        
+        if (my_m[str])
         {
             cnt++;
             v2.push_back(str);
         }
-
     }
-    sort(v2.begin(),v2.end()); // for output format
     cout << cnt << '\n';
+
+    sort(v2.begin(),v2.end()); // for output format
 
     for(int i = 0; i < v2.size(); i++)
     {
