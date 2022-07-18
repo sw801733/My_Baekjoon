@@ -25,7 +25,7 @@ int main()
         cin >> str;
         my_v.push_back(str);
     }
-    sort(my_v.begin(),my_v.end());
+    sort(my_v.begin(),my_v.end()); // for binary_search
     for(int i = 0; i < M; i++)
     {
         string str;
@@ -38,7 +38,7 @@ int main()
         }
 
     }
-    sort(v2.begin(),v2.end());
+    sort(v2.begin(),v2.end()); // for output format
     cout << cnt << '\n';
 
     for(int i = 0; i < v2.size(); i++)
