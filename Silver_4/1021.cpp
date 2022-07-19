@@ -24,45 +24,43 @@ int main()
     {
         int a;
         cin >> a;
-        int cnt1 = 0;
-        int cnt2 = 0;
-
+        int idx = 0;
+        int cnt = 0;
         for(int i = 0; i < my_d.size(); i++)
         {
-            if (my_d.front() == a)
-                cnt1 = i;
-            my_d.push_back(my_d.front());
-            my_d.pop_front();
-        }
-
-        for(int i = 0; i < my_d.size(); i++)
-        {
-            if (my_d.front() == a)
-                cnt2 = i;
-            my_d.push_front(my_d.back());
-            my_d.pop_back();
-        }
-
-        if (cnt1 < cnt2)
-        {  
-            min_cnt += cnt1;
-            while(cnt1--)
+            if(my_d[i] == a)
             {
+                idx = i;
+                break;
+            }
+        }
+        
+        if (idx < my_d.size() - idx)
+        {  
+
+            while(1)
+            {
+                if (my_d.front() == a)
+                    break;
                 my_d.push_back(my_d.front());
                 my_d.pop_front();
+                cnt++;
             }
+            min_cnt += cnt;
         }
         else
         {
-            min_cnt += cnt2;
-            while(cnt2--)
+            while(1)
             {
+                if (my_d.front() == a)
+                    break;
                 my_d.push_front(my_d.back());
                 my_d.pop_back();
+                cnt++;
             }
-            
-
+            min_cnt += cnt;
         }
+        
         my_d.pop_front();
     }
     cout << min_cnt;
