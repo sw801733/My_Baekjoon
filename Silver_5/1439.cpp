@@ -21,28 +21,15 @@ int main()
 
     for(int i = 0; i < S.size(); i++)
     {
-        if(S[i] == '1' && f1 == 0)
+        if(S[i] != S[i+1])
         {
             cnt1++;
-            f1 = 1;
-            f2 = 0;
         }
-
-
-        if(S[i] == '0' && f2 == 0)
-        {
-            cnt2++;
-            f1 = 0;
-            f2 = 1;
-        }
-
-
     }
 
-    if (cnt1 < cnt2)
+    if(!cnt1)
         cout << cnt1;
-    else if (cnt1 >= cnt2)
-        cout << cnt2;
-
+    else
+        cout << cnt1 /2;
     return 0;
 }
