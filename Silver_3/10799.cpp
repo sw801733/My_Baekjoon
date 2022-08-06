@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <stack>
 
 using namespace std;
 
@@ -7,6 +7,7 @@ int main()
 {
 
     string parenthesisStr;
+    stack<char> my_s;
     cin >> parenthesisStr;
 
     int ironbarNum = 0;
@@ -15,25 +16,19 @@ int main()
 
     for(int i = 0; i < parenthesisStr.size(); i++)
     {
-        if (flag == 1 && parenthesisStr[i] == '(')
-        {
-            ironbarNum++;
-        }
-
         if (parenthesisStr[i] == '(')
-        {  
-            flag = 1;
+        {
+            my_s.push(parenthesisStr[i]);
         }
         else
         {
-            if (flag == 1)
-                cuttedNum += ironbarNum;
-            else if (flag == 0)
+            my_s.pop();
+            if (parenthesisStr[i - 1] == '(')
+                cuttedNum += my_s.size();
+            else
             {
                 cuttedNum++;
-                ironbarNum--;
             }
-            flag = 0;
         }
     }
 
