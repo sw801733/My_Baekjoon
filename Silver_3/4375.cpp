@@ -11,7 +11,7 @@ int main()
         long long numberConsistOf1 = 1;
         while(numberConsistOf1 % n != 0)
         {
-            numberConsistOf1 = (numberConsistOf1 * 10) % n + 1;
+            numberConsistOf1 = (numberConsistOf1 * 10) % n + 1 % n;
             cnt++;
         }
         cout << cnt << "\n";
