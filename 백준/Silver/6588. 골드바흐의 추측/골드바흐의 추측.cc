@@ -12,7 +12,7 @@ void check_primeN()
     for (int i = 1; i <= number; i++)
         arr[i] = 1;
 
-    for (int i = 2; i <= number; i++)
+    for (int i = 3; i <= sqrt(number); i+= 2)
     {
         if (arr[i] == 0)
             continue;
