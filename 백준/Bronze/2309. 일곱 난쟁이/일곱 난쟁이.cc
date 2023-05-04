@@ -12,27 +12,20 @@ int main()
     cin.tie(NULL);
 
     int arr[9];
-    int arr2[7];
+
+    int sum = 0;
 
     for (int i = 0; i < 9; i++)
     {
         cin >> arr[i];
+        sum += arr[i];
     }
     sort(arr, arr + 9);
-    int k1, k2;
     for (int i = 0; i < 9; i++)
     {
-        int sum = 0;
-        for (int j = i + 1; j < 9; j++)
+        for (int j = 0; j < 9; j++)
         {
-            for (int k = 0; k < 9; k++)
-            {
-                if (k != i && k != j)
-                {
-                    sum += arr[k];
-                }
-            }
-            if (sum == 100)
+            if (sum - (arr[i] + arr[j]) == 100)
             {
                 for (int a = 0; a < 9; a++)
                 {
@@ -41,8 +34,6 @@ int main()
                 }
                 return 0;
             }
-            else
-                sum = 0;
         }
     }
 
