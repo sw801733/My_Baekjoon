@@ -18,36 +18,23 @@ int main()
 
     int N, M;
     cin >> N >> M;
+    int cnt = 0;
 
     map<int, bool> A;
-    map<int, bool> B;
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < N + M; i++)
     {
         int a;
         cin >> a;
-        A[a] = true;
-    }
-    for (int i = 0; i < M; i++)
-    {
-        int b;
-        cin >> b;
-        B[b] = true;
-    }
-
-    int cnt = 0;
-    for (auto iter = B.begin(); iter != B.end(); iter++)
-    {
-        if (A[iter->first] == false)
-            cnt++;
-    }
-    for (auto iter = A.begin(); iter != A.end(); iter++)
-    {
-        if (B[iter->first] == false)
-            cnt++;
+        if (A[a] == true)
+        {
+            A.erase(a);
+        }
+        else
+            A[a] = true;
     }
 
-    cout << cnt;
+    cout << A.size();
 
     return 0;
 }
