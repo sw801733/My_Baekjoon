@@ -21,16 +21,13 @@ int main()
 
     cin >> S;
 
-    for (int i = 1; i <= S.length(); i++)
+    for (int i = 0; i < S.length(); i++)
     {
         string temp = "";
-        for (int j = 0; j < S.length(); j++)
+        for (int j = i; j < S.length(); j++)
         {
-            if (j + i <= S.length())
-            {
-                temp = S.substr(j, i);
-                map_S[temp] = true;
-            }
+            temp += S[j];
+            map_S[temp] = true;
         }
     }
     cout << map_S.size();
