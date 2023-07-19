@@ -29,21 +29,17 @@ int main()
     int N, S;
     cin >> N >> S;
 
-    vector<int> my_v;
+    int answer = 0;
     int prev = 0;
     for (int i = 0; i < N; i++)
     {
         int A;
         cin >> A;
 
-        my_v.push_back(abs(A - S));
+        answer = gcd(prev, abs(A - S));
+
+        prev = answer;
     }
 
-    while (my_v.size() > 1)
-    {
-        my_v[0] = gcd(my_v[0], my_v[1]);
-        my_v.erase(my_v.begin() + 1, my_v.begin() + 2);
-    }
-
-    cout << my_v[0];
+    cout << answer;
 }
