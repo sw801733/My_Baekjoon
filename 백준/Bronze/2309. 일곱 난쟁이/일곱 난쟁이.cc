@@ -1,41 +1,30 @@
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
-
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
     int arr[9];
-
-    int sum = 0;
-
+    ;
     for (int i = 0; i < 9; i++)
     {
         cin >> arr[i];
-        sum += arr[i];
     }
+
     sort(arr, arr + 9);
-    for (int i = 0; i < 9; i++)
+    do
     {
-        for (int j = 0; j < 9; j++)
+        int sum = 0;
+        for (int i = 0; i < 7; i++)
+            sum += arr[i];
+
+        if (sum == 100)
         {
-            if (sum - (arr[i] + arr[j]) == 100)
-            {
-                for (int a = 0; a < 9; a++)
-                {
-                    if (a != i && a != j)
-                        cout << arr[a] << "\n";
-                }
-                return 0;
-            }
+            for (int i = 0; i < 7; i++)
+                cout << arr[i] << "\n";
+            break;
         }
-    }
+    } while (next_permutation(arr, arr + 9));
 
     return 0;
 }
