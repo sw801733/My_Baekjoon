@@ -10,41 +10,25 @@ int main()
     cin >> patten;
 
     int star_index = patten.find('*');
+    string pre = patten.substr(0, star_index);
+    string post = patten.substr(star_index + 1);
 
     for (int i = 0; i < N; i++)
     {
         string str;
-        int flag = 0;
         cin >> str;
-
-        for (int i = 0; i < star_index; i++)
-        {
-            if (str[i] != patten[i])
-            {
-                flag = 1;
-                break;
-            }
-        }
-        str.erase(0, star_index);
-        int temp = patten.length() - 1 - star_index;
-        for (int i = star_index + 1; i < patten.length(); i++)
-        {
-            if (str[str.length() - temp] != patten[i])
-            {
-                flag = 1;
-                break;
-            }
-            temp--;
-        }
-
-        if (flag == 0)
-        {
-            cout << "DA"
-                 << "\n";
-        }
-        else
+        if (pre.length() + post.length() > str.length())
             cout << "NE"
                  << "\n";
+        else
+        {
+            if (str.substr(0, star_index) == pre && str.substr(str.length() - post.length()) == post)
+                cout << "DA"
+                     << "\n";
+            else
+                cout << "NE"
+                     << "\n";
+        }
     }
 
     return 0;
