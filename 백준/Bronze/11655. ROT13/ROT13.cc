@@ -1,17 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <math.h>
-#include <string>
-#include <stack>
-#include <queue>
-#include <algorithm>
-#include <set>
-#include <map>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
+
     string str;
 
     getline(cin, str);
@@ -20,14 +13,15 @@ int main()
     {
         if (str[i] >= 'a' && str[i] <= 'z')
         {
-            str[i] = (str[i] + 13 - 'a') % 26 + 'a';
+            str[i] = (char)((str[i] - 'a' + 13) % 26) + 'a';
         }
         else if (str[i] >= 'A' && str[i] <= 'Z')
         {
-            str[i] = (str[i] + 13 - 'A') % 26 + 'A';
+            str[i] = (char)((str[i] - 'A' + 13) % 26) + 'A';
         }
-        cout << str[i];
     }
+
+    cout << str;
 
     return 0;
 }
