@@ -15,6 +15,12 @@ void dfs(int y, int x)
 {
     visited[y][x] = 1;
 
+    if (arr[y][x] == 1)
+    {
+        cheese.push_back({y, x});
+        return;
+    }
+
     for (int i = 0; i < 4; i++)
     {
         int ny = y + dy[i];
@@ -22,12 +28,6 @@ void dfs(int y, int x)
 
         if (ny < 0 || ny >= N || nx < 0 || nx >= M || visited[ny][nx] == 1)
             continue;
-
-        if (arr[ny][nx] == 1)
-        {
-            cheese.push_back({ny, nx});
-        }
-        else if (arr[ny][nx] == 0)
             dfs(ny, nx);
     }
     return;
@@ -60,27 +60,12 @@ int main()
 
     while (clear_cheese() != true)
     {
-        for (int i = 0; i < N; i++)
-        {
-            for (int j = 0; j < M; j++)
-            {
-                visited[i][j] = 0;
-            }
-        }
 
-        // fill(&visited[0][0], &visited[0][0] + N * M, 0);
+        fill(&visited[0][0], &visited[0][0] + 101 * 101, 0);
         clear_cnt++;
         dfs(0, 0);
 
-        one_hour_che_cnt = 0;
-        for (int i = 0; i < N; i++)
-        {
-            for (int j = 0; j < M; j++)
-            {
-                if (arr[i][j] == 1)
-                    one_hour_che_cnt++;
-            }
-        }
+        one_hour_che_cnt = cheese.size();
         for (pair<int, int> a : cheese)
         {
             arr[a.first][a.second] = 0;
