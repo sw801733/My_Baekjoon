@@ -1,56 +1,35 @@
-#include <iostream>
-#include <vector>
-#include <math.h>
-#include <string>
-#include <stack>
-#include <queue>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
     int N;
-    cin >> N;
 
-    vector<int> my_v;
+    int arr[1000004];
+    int result[1000004];
+
     stack<int> my_s;
-    stack<int> my_index;
-    vector<int> answer(N);
 
+    cin >> N;
+    memset(result, -1, sizeof(result));
     for (int i = 0; i < N; i++)
     {
-        int a;
-        cin >> a;
-        my_v.push_back(a);
-    }
-
-    for (int i = 0; i < N - 1; i++)
-    {
-        while (!my_s.empty() && my_s.top() < my_v[i + 1])
+        cin >> arr[i];
+        while (my_s.size() && arr[my_s.top()] < arr[i])
         {
-            answer[my_index.top()] = my_v[i + 1];
+            result[my_s.top()] = arr[i];
             my_s.pop();
-            my_index.pop();
         }
 
-        if (my_v[i] < my_v[i + 1])
-            answer[i] = my_v[i + 1];
-
-        else
-        {
-            my_s.push(my_v[i]);
-            my_index.push(i);
-        }
+        my_s.push(i);
     }
 
-    for (int i = 0; i < N - 1; i++)
-    {
-        if (answer[i] == 0)
-            cout << -1 << " ";
-        else
-            cout << answer[i] << " ";
-    }
-    cout << -1;
+    for (int i = 0; i < N; i++)
+        cout << result[i] << " ";
+
     return 0;
 }
