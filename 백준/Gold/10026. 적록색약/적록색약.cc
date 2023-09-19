@@ -16,7 +16,7 @@ int visited[max_n][max_n];
 int dy[] = {-1, 0, 1, 0};
 int dx[] = {0, 1, 0, -1};
 
-void dfs(int y, int x, char c, int flag)
+void dfs(int y, int x)
 {
     visited[y][x] = 1;
 
@@ -28,24 +28,8 @@ void dfs(int y, int x, char c, int flag)
         if (ny < 0 || ny >= N || nx < 0 || nx >= N || visited[ny][nx])
             continue;
 
-        if (flag == 0)
-        {
-            if (arr[ny][nx] == c)
-                dfs(ny, nx, c, flag);
-        }
-        else
-        {
-            if (c == 'R' || c == 'G')
-            {
-                if (arr[ny][nx] == 'R' || arr[ny][nx] == 'G')
-                    dfs(ny, nx, c, flag);
-            }
-            else
-            {
-                if (arr[ny][nx] == c)
-                    dfs(ny, nx, c, flag);
-            }
-        }
+        if (arr[ny][nx] == arr[y][x])
+            dfs(ny, nx);
     }
 }
 
@@ -56,43 +40,48 @@ int main()
 
     cin >> N;
 
-    char ch[3] = {'R', 'G', 'B'};
+    char ch[3] = {'R', 'B', 'G'};
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
             cin >> arr[i][j];
 
     int nomarl_cnt = 0;
     int invisible_green_cnt = 0;
-    for (int k = 0; k < 3; k++)
-    {
-        for (int i = 0; i < N; i++)
-        {
-            for (int j = 0; j < N; j++)
-            {
 
-                if (visited[i][j] == 0 && arr[i][j] == ch[k])
-                {
-                    nomarl_cnt++;
-                    dfs(i, j, ch[k], 0);
-                }
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+
+            if (visited[i][j] == 0)
+            {
+                nomarl_cnt++;
+                dfs(i, j);
             }
         }
     }
 
     fill(&visited[0][0], &visited[0][0] + max_n * max_n, 0);
 
-    for (int k = 0; k < 3; k++)
+    for (int i = 0; i < N; i++)
     {
-        for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
         {
-            for (int j = 0; j < N; j++)
-            {
 
-                if (visited[i][j] == 0 && arr[i][j] == ch[k])
-                {
-                    invisible_green_cnt++;
-                    dfs(i, j, ch[k], 1);
-                }
+            if (arr[i][j] == 'G')
+                arr[i][j] = 'R';
+        }
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+
+            if (visited[i][j] == 0)
+            {
+                invisible_green_cnt++;
+                dfs(i, j);
             }
         }
     }
