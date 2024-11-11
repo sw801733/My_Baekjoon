@@ -5,19 +5,13 @@ class Solution {
         int answer = 0;
         Arrays.sort(citations);
         
-        for(int i = 0; i <= citations[citations.length - 1]; i++) {
-            int lessCnt = 0;
-            int moreCnt = 0;
-            for(int j = 0; j < citations.length; j++) {
-                if (citations[j] < i)
-                    lessCnt++;
-                if (citations[j] >= i)
-                    moreCnt++;
-            }
-            if (moreCnt < lessCnt)
+        for(int i = 0; i < citations.length; i++) {
+            int h = citations.length - i;
+            
+            if (citations[i] >= h) {
+                answer = h;
                 break;
-            if (i <= moreCnt && lessCnt <= i)
-                answer = i;
+            }
         }
         
         return answer;
